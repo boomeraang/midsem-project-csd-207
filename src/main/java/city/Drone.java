@@ -7,6 +7,8 @@ public class Drone
     private String ID;
     private float coords_x,coords_y;
 
+    //set and get functions
+
     public void SetID(Scanner input)
     {
         ID = input.nextLine();
@@ -23,5 +25,18 @@ public class Drone
         return ID;
     }
 
+    public float GetCoordsX()
+    {
+        return coords_x;
+    }
+
+    public float GetCoordsY()
+    {
+        return coords_y;
+    }
+
+    //end of set and get functions
 }
+
+
 
