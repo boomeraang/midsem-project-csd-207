@@ -1,23 +1,12 @@
 package city;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.nio.ByteBuffer;
 import java.util.Scanner;
-import java.util.ArrayList;
+
+import filestuff.FileIO;
 
 public class TouristDrone extends Drone
 {
-    /*private static ArrayList<Places> restaurants = new ArrayList<>();
-    private static ArrayList<Places> landmarks = new ArrayList<>();
-    private static ArrayList<Places> recreational_places = new ArrayList<>();
-    private static ArrayList<Places> hotels = new ArrayList<>();
-    private static ArrayList<Places> shops = new ArrayList<>();
-    */
-
     public void AddPlace()
     {
         int choice;
@@ -33,38 +22,50 @@ public class TouristDrone extends Drone
             if(choice == 1)
             {
                 Places landmark = new Places();
-                System.out.println("enter the landmark details.\n name:");
-                landmark.SetName(input);
-                System.out.println("picture ID");
-                landmark.SetPictureID(input);
-                landmark.SetCategory("landmark");
-                System.out.println("enter coordinates");
-                landmark.SetCoords(Integer.parseInt(input.nextLine()),Integer.parseInt(input.nextLine()));
+                landmark.SetAllData(input,"landmark",Integer.parseInt(input.nextLine()),Integer.parseInt(input.nextLine()));
 
                 File file = new File("/home/cybereagle3-1/AndroidStudioProjects/FirstApp/midsem_project/src/main/java/filestuff/landmarks.txt");
-                try
-                {
-                    FileOutputStream file_writer = new FileOutputStream(file,true);
-
-                    //writing landmark details by converting individual data members to byte arrays
-                    file_writer.write(landmark.GetName().getBytes());
-                    file_writer.write(landmark.GetPictureID().getBytes());
-                    //using ByteBuffer to getbytes float stuff
-                    file_writer.write(ByteBuffer.allocate(10).putFloat(landmark.GetCoordsX()).array());
-                    file_writer.write(ByteBuffer.allocate(10).putFloat(landmark.GetCoordsY()).array());
-
-                    file_writer.flush();
-                    file_writer.close();
-                } catch (FileNotFoundException fno)
-                {
-                    System.out.println("file not found");
-                }
-                catch (IOException io)
-                {
-                    System.out.println("IOException occured");
-                }
-
+                new FileIO().WritePlacesonFile(landmark,file);
             }
+            else if(choice == 2)
+            {
+                {
+                    Places restaurant = new Places();
+                    restaurant.SetAllData(input,"restaurant",Integer.parseInt(input.nextLine()),Integer.parseInt(input.nextLine()));
+
+                    File file = new File("/home/cybereagle3-1/AndroidStudioProjects/FirstApp/midsem_project/src/main/java/filestuff/restaurants.txt");
+                    new FileIO().WritePlacesonFile(restaurant,file);
+                }
+            }
+            else if(choice == 3)
+            {
+                Places hotel = new Places();
+                hotel.SetAllData(input,"hotel",Integer.parseInt(input.nextLine()),Integer.parseInt(input.nextLine()));
+
+                File file = new File("/home/cybereagle3-1/AndroidStudioProjects/FirstApp/midsem_project/src/main/java/filestuff/hotels.txt");
+                new FileIO().WritePlacesonFile(hotel,file);
+            }
+            else if(choice == 4)
+            {
+                Places recreation = new Places();
+                recreation.SetAllData(input,"recreation",Integer.parseInt(input.nextLine()),Integer.parseInt(input.nextLine()));
+
+                File file = new File("/home/cybereagle3-1/AndroidStudioProjects/FirstApp/midsem_project/src/main/java/filestuff/recreations.txt");
+                new FileIO().WritePlacesonFile(recreation,file);
+            }
+            else if(choice == 5)
+            {
+                Places shop = new Places();
+                shop.SetAllData(input,"shop",Integer.parseInt(input.nextLine()),Integer.parseInt(input.nextLine()));
+
+                File file = new File("/home/cybereagle3-1/AndroidStudioProjects/FirstApp/midsem_project/src/main/java/filestuff/shops.txt");
+                new FileIO().WritePlacesonFile(shop,file);
+            }
+
+            System.out.println("do you want to add any more places y/n");
+            if(input.nextLine().equals("n"))
+                dont_exit_loop = false;
         }
     }
+
 }

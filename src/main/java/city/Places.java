@@ -31,6 +31,17 @@ public class Places
         coords_y = y;
     }
 
+    public void SetAllData(Scanner input,String str,int x,int y)
+    {
+        System.out.println("enter the landmark details.\n name:");
+        SetName(input);
+        System.out.println("picture ID");
+        SetPictureID(input);
+        SetCategory(str);
+        System.out.println("enter coordinates");
+        SetCoords(x,y);
+    }
+
     public String GetName()
     {
         return name;
@@ -41,7 +52,7 @@ public class Places
         return pictureID;
     }
 
-    public String category()
+    public String Getcategory()
     {
         return category;
     }
