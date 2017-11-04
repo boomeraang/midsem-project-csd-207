@@ -4,9 +4,12 @@ import java.io.File;
 import java.util.Scanner;
 
 import filestuff.FileIO;
+import users.User;
 
 public class TouristDrone extends Drone
 {
+    public static void TouristMenu()
+
     public void AddPlace()
     {
         int choice;
@@ -66,6 +69,12 @@ public class TouristDrone extends Drone
             if(input.nextLine().equals("n"))
                 dont_exit_loop = false;
         }
+    }
+
+    public void AddTourist(User tourist)
+    {
+        File file = new File("/home/cybereagle3-1/AndroidStudioProjects/FirstApp/midsem_project/src/main/java/filestuff/tourists.txt");
+        new FileIO().WriteUsersonFile(tourist, file);
     }
 
 }

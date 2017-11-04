@@ -1,8 +1,12 @@
 package filestuff;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 
@@ -57,4 +61,28 @@ public class FileIO
         }
     }
 
+    public boolean DeleteUsersfromFile(User user,File read_file) throws IOException
+    {
+        File temp_file = new File("/home/cybereagle3-1/AndroidStudioProjects/FirstApp/midsem_project/src/main/java/filestuff/temp.txt");
+
+        BufferedReader file_reader = new BufferedReader(new FileReader(read_file));
+        BufferedWriter file_writer = new BufferedWriter(new FileWriter(temp_file));
+
+        String lineToRemove = user.GetUserID() + user.GetUserPassword();
+        String currentLine;
+
+        while((currentLine = file_reader.readLine()) != null)
+        {
+            // trim newline when comparing with lineToRemove
+            String trimmedLine = currentLine.trim();
+            if(trimmedLine.equals(lineToRemove))
+                continue;
+            file_writer.write(currentLine + System.getProperty("line.separator"));
+        }
+        file_writer.close();
+        file_reader.close();
+
+        boolean success = temp_file.renameTo(read_file);
+        return success;
+    }
 }
