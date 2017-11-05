@@ -45,7 +45,18 @@ public class MainMenu
             }
             else if(choice == 2)
             {
+                try
+                {
+                    if(new FileIO().UserLogin("cops.txt",temp_username,temp_password))
+                    {
+                        Cops cop = new Cops();
+                        cop.CopMenu();
+                    }
 
+                } catch (IOException io)
+                {
+                    System.out.println("IOException occurred");
+                }
             }
             else if(choice == 3)
             {
@@ -62,6 +73,19 @@ public class MainMenu
                     System.out.println("IOException occurred");
                 }
             }
+            else if(choice == 4)
+                try
+                {
+                    if(new FileIO().UserLogin("cop_admin.txt",temp_username,temp_password))
+                    {
+                        CopAdmin admin = new CopAdmin();
+                        admin.CopAdminMenu();
+                    }
+
+                } catch (IOException io)
+                {
+                    System.out.println("IOException occurred");
+                }
         }
 
     }
