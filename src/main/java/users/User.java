@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class User
 {
     private String userID,user_password;
+    private int coords_x,coords_y;
 
     public void SetUserID(Scanner input)
     {
@@ -14,6 +15,12 @@ public class User
     public void SetUserPassword(Scanner input)
     {
         user_password = input.nextLine();
+    }
+
+    public void SetUserCoords(int x,int y)
+    {
+        coords_x = x;
+        coords_y = y;
     }
 
     public String GetUserID()
@@ -26,5 +33,13 @@ public class User
         return user_password;
     }
 
+    public float GetUserCoordsX()
+    {
+        return coords_x;
+    }
 
+    public float GetUserCoordsY()
+    {
+        return coords_y;
+    }
 }

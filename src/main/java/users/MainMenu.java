@@ -34,8 +34,8 @@ public class MainMenu
                 {
                     if(new FileIO().UserLogin("tourists.txt",temp_username,temp_password))
                     {
-                        User tourist = new User();
-                        tourist.Tenu();
+                        Tourists tourist = new Tourists();
+                        tourist.TouristMenu();
                     }
 
                 } catch (IOException io)

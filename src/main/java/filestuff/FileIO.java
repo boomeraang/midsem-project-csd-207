@@ -45,7 +45,9 @@ public class FileIO
         {
             FileOutputStream file_writer = new FileOutputStream(file,true);
 
+            file_writer.write(System.lineSeparator().getBytes());
             file_writer.write(user.GetUserID().getBytes());
+            file_writer.write(System.lineSeparator().getBytes());
             file_writer.write(user.GetUserPassword().getBytes());
 
             file_writer.flush();

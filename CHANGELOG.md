@@ -1,8 +1,18 @@
-### 5.11.17
+## 5.11.17
+
+### commit
+
+#### User
+* added coordinate fields for users
+* setters and getters for coordinates
+
+#### Tourists
+* created a new tourists class with a menu calling TouristDrone functions
+
+### commit 63cdea0de1514141095180c5cfe442277917eab9
 
 #### Tourist drone
 * replaced an if else if block with just a single case using string concatenation
-*
 
 #### Admin stuff
 * deprecated admin login
@@ -12,7 +22,7 @@
 
 
 
-### 4.11.17
+## 4.11.17
 
 #### Admin stuff
 * made class Admin abstract
