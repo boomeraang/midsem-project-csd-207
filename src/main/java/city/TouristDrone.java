@@ -1,6 +1,9 @@
 package city;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Scanner;
 
 import filestuff.FileIO;
@@ -8,67 +11,50 @@ import users.User;
 
 public class TouristDrone extends Drone
 {
-    public static void TouristMenu()
-
     public void AddPlace()
     {
         int choice;
         Scanner input = new Scanner(System.in);
         boolean dont_exit_loop = true;
 
-        while(dont_exit_loop)
+        while (dont_exit_loop)
         {
             System.out.println("enter the kind of place do you want to add.");
             System.out.println("1.landmarks\n2.restaurants\n3.hotels\n4.recreational places\n5.shops");
             choice = Integer.parseInt(input.nextLine());
 
-            if(choice == 1)
-            {
-                Places landmark = new Places();
-                landmark.SetAllData(input,"landmark",Integer.parseInt(input.nextLine()),Integer.parseInt(input.nextLine()));
+            String choice_type = "garbage.txt";
 
-                File file = new File("/home/cybereagle3-1/AndroidStudioProjects/FirstApp/midsem_project/src/main/java/filestuff/landmarks.txt");
-                new FileIO().WritePlacesonFile(landmark,file);
-            }
-            else if(choice == 2)
-            {
-                {
-                    Places restaurant = new Places();
-                    restaurant.SetAllData(input,"restaurant",Integer.parseInt(input.nextLine()),Integer.parseInt(input.nextLine()));
+            if (choice == 1)
+                choice_type = "landmarks.txt";
+            else if (choice == 2)
+                choice_type = "restaurants.txt";
+            else if (choice == 3)
+                choice_type = "hotels.txt";
+            else if (choice == 4)
+                choice_type = "recreations.txt";
+            else if (choice == 5)
+                choice_type = "shops.txt";
 
-                    File file = new File("/home/cybereagle3-1/AndroidStudioProjects/FirstApp/midsem_project/src/main/java/filestuff/restaurants.txt");
-                    new FileIO().WritePlacesonFile(restaurant,file);
-                }
-            }
-            else if(choice == 3)
-            {
-                Places hotel = new Places();
-                hotel.SetAllData(input,"hotel",Integer.parseInt(input.nextLine()),Integer.parseInt(input.nextLine()));
+            Places landmark = new Places();
 
-                File file = new File("/home/cybereagle3-1/AndroidStudioProjects/FirstApp/midsem_project/src/main/java/filestuff/hotels.txt");
-                new FileIO().WritePlacesonFile(hotel,file);
-            }
-            else if(choice == 4)
-            {
-                Places recreation = new Places();
-                recreation.SetAllData(input,"recreation",Integer.parseInt(input.nextLine()),Integer.parseInt(input.nextLine()));
+            System.out.println("enter the landmark details.\n name:");
+            landmark.SetName(input);
+            System.out.println("picture ID");
+            landmark.SetPictureID(input);
+            System.out.println("enter coordinates");
+            landmark.SetCoords(Integer.parseInt(input.nextLine()), Integer.parseInt(input.nextLine()));
+            landmark.SetCategory("landmark");
 
-                File file = new File("/home/cybereagle3-1/AndroidStudioProjects/FirstApp/midsem_project/src/main/java/filestuff/recreations.txt");
-                new FileIO().WritePlacesonFile(recreation,file);
-            }
-            else if(choice == 5)
-            {
-                Places shop = new Places();
-                shop.SetAllData(input,"shop",Integer.parseInt(input.nextLine()),Integer.parseInt(input.nextLine()));
-
-                File file = new File("/home/cybereagle3-1/AndroidStudioProjects/FirstApp/midsem_project/src/main/java/filestuff/shops.txt");
-                new FileIO().WritePlacesonFile(shop,file);
-            }
+            File file = new File("/home/cybereagle3-1/AndroidStudioProjects/FirstApp/midsem_project/src/main/java/filestuff/" + choice_type);
+            new FileIO().WritePlacesonFile(landmark, file);
 
             System.out.println("do you want to add any more places y/n");
-            if(input.nextLine().equals("n"))
+            if (input.nextLine().equals("n"))
                 dont_exit_loop = false;
         }
+
+        return;
     }
 
     public void AddTourist(User tourist)
@@ -77,4 +63,24 @@ public class TouristDrone extends Drone
         new FileIO().WriteUsersonFile(tourist, file);
     }
 
+    public void TouristMenu()
+    {
+        Scanner input = new Scanner(System.in);
+        boolean exit_loop = false;
+
+        while (!exit_loop)
+        {
+            System.out.println("welcome. what would you like to do");
+            System.out.println("1.\n2.cop login\n3.tourist admin login\n4.cop admin login\n5.shutdown system");
+            int choice = Integer.parseInt(input.nextLine());
+
+            if (choice == 1)
+            {
+            } else if (choice == 2)
+            {
+
+            }
+
+        }
+    }
 }

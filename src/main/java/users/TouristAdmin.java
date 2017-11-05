@@ -7,7 +7,7 @@ import city.TouristDrone;
 
 public class TouristAdmin extends Admin
 {
-    public void AdminMenu()
+    public void TouristAdminMenu()
     {
         int ch;
         Scanner input = new Scanner(System.in);
@@ -38,7 +38,7 @@ public class TouristAdmin extends Admin
 
                 try
                 {
-                    DeleteUser(to_be_deleted);
+                    DeleteUser(to_be_deleted,"tourists.txt");
                 } catch (IOException io)
                 {
                     System.out.println("IOException occurred");
@@ -48,7 +48,8 @@ public class TouristAdmin extends Admin
             {
                 new TouristDrone().AddPlace();
             }
-
+            else if(ch == 4)
+                return;
         }
     }
 }

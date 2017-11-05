@@ -85,4 +85,27 @@ public class FileIO
         boolean success = temp_file.renameTo(read_file);
         return success;
     }
+
+    public boolean UserLogin(String filename,String ID,String password) throws IOException
+    {
+        File file = new File("/home/cybereagle3-1/AndroidStudioProjects/FirstApp/midsem_project/src/main/java/filestuff/" + filename);
+        BufferedReader file_reader = new BufferedReader(new FileReader(file));
+
+        String trimmed_line,current_line;
+        while((current_line = file_reader.readLine()) != null)
+        {
+            trimmed_line = current_line.trim();
+            if(trimmed_line.equals(ID))
+            {
+                current_line = file_reader.readLine();
+                trimmed_line = current_line.trim();
+
+                if (trimmed_line.equals(password))
+                    return true;
+            }
+        }
+
+        file_reader.close();
+        return false;
+    }
 }

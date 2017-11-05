@@ -24,7 +24,7 @@ public abstract class Admin extends User
         new FileIO().DeleteUsersfromFile(x,read_file);
     }
 
-    public boolean AdminLogin(String admin_filename,String ID,String password) throws IOException
+    /*public boolean AdminLogin(String admin_filename,String ID,String password) throws IOException
     {
         File file = new File("/home/cybereagle3-1/AndroidStudioProjects/FirstApp/midsem_project/src/main/java/filestuff/" + admin_filename);
         BufferedReader file_reader = new BufferedReader(new FileReader(file));
@@ -45,6 +45,6 @@ public abstract class Admin extends User
 
         file_reader.close();
         return false;
-    }
+    }*/
 }
 
