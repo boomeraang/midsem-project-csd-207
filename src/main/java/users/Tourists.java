@@ -9,9 +9,10 @@ public class Tourists extends User
         Scanner input = new Scanner(System.in);
         boolean exit_loop = false;
 
+        System.out.println("welcome. what would you like to do");
+
         while (!exit_loop)
         {
-            System.out.println("welcome. what would you like to do");
             System.out.println("1.where am i\n2.suggest places\n3.go to place\n4.change password\n5.logout");
             int choice = Integer.parseInt(input.nextLine());
 

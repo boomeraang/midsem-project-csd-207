@@ -2,6 +2,17 @@
 
 ### commit
 
+#### Cop admin
+* created class CopAdmin extends Admin
+* menu to interact with cops.txt
+
+#### Cops
+* added class Cops extends user
+* basic menu for interacting with CopDrone
+
+
+### commit c8fa572b9cd996fb6f7dbb5f5ef178347be1c275
+
 #### User
 * added coordinate fields for users
 * setters and getters for coordinates

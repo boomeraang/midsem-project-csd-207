@@ -22,10 +22,14 @@ public class FileIO
             FileOutputStream file_writer = new FileOutputStream(file, true);
 
             //writing places details by converting individual data members to byte arrays
+                file_writer.write(System.lineSeparator().getBytes());
             file_writer.write(place.GetName().getBytes());
+                file_writer.write(System.lineSeparator().getBytes());
             file_writer.write(place.GetPictureID().getBytes());
             //using ByteBuffer to getbytes float stuff
+                file_writer.write(System.lineSeparator().getBytes());
             file_writer.write(ByteBuffer.allocate(10).putFloat(place.GetCoordsX()).array());
+                file_writer.write(System.lineSeparator().getBytes());
             file_writer.write(ByteBuffer.allocate(10).putFloat(place.GetCoordsY()).array());
 
             file_writer.flush();
