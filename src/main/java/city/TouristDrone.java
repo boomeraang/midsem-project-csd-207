@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 import filestuff.FileIO;
+import users.Tourists;
 import users.User;
 
 public class TouristDrone extends Drone
@@ -57,10 +58,28 @@ public class TouristDrone extends Drone
         return;
     }
 
-    public void AddTourist(User tourist)
+    public void AddTourist(Tourists tourist)
     {
         File file = new File("/home/cybereagle3-1/IdeaProjects/midsem-project-csd-207/src/main/java/filestuff/tourists.txt");
         new FileIO().WriteUsersonFile(tourist, file);
+    }
+
+    public void WhereAmI(Tourists tourist)
+    {
+        System.out.println("X=" + tourist.GetUserCoordsX());
+        System.out.println("Y=" + tourist.GetUserCoordsY());
+    }
+
+    public void MoveDrone(Tourists tourist)
+    {
+        Scanner input = new Scanner(System.in);
+
+        System.out.println("enter coordinates");
+        System.out.print("X:");
+        int x = Integer.parseInt(input.nextLine());
+        System.out.print("Y:");
+        int y = Integer.parseInt(input.nextLine());
+        tourist.SetUserCoords(x,y);
     }
 
 }

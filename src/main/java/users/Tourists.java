@@ -1,5 +1,6 @@
 package users;
 
+import city.TouristDrone;
 import filestuff.FileIO;
 
 import java.io.IOException;
@@ -11,6 +12,11 @@ public class Tourists extends User
     {
         super();
     }*/
+
+    public Tourists()
+    {
+        super();
+    }
 
     public Tourists(String touristID, String pass)
     {
@@ -31,23 +37,17 @@ public class Tourists extends User
 
             if (choice == 6)
                 break;
-            else if (choice == 1)
-            {
-                System.out.println("X=" + GetUserCoordsX());
-                System.out.println("Y=" + GetUserCoordsY());
-            }
+
+            TouristDrone tdrone = new TouristDrone();
+            if (choice == 1)
+                tdrone.WhereAmI(this);
             else if(choice == 2)
             {
 
             }
             else if(choice == 3)
             {
-                System.out.println("enter coordinates");
-                System.out.print("X:");
-                int x = Integer.parseInt(input.nextLine());
-                System.out.print("Y:");
-                int y = Integer.parseInt(input.nextLine());
-                SetUserCoords(x,y);
+                tdrone.MoveDrone(this);
             }
             else if(choice == 4)
             {
@@ -77,7 +77,10 @@ public class Tourists extends User
                     String temp_password = input.nextLine();
 
                     if(new FileIO().UserLogin("tourists.txt",this.GetUserID(),temp_password))
+                    {
                         DeleteUser("tourists.txt");
+                        break;
+                    }
                 } catch (IOException io)
                 {
                     System.out.println("IOException occurred");

@@ -86,7 +86,9 @@ public class FileIO
                 user_line = user.GetUserPassword();
                 continue;
             }
-            file_writer.write(currentLine + System.getProperty("line.separator"));
+            file_writer.write(currentLine);
+            file_writer.newLine();
+            //file_writer.write(currentLine + System.getProperty("line.separator"));
         }
         file_writer.close();
         file_reader.close();
@@ -113,7 +115,9 @@ public class FileIO
             {
                 line_to_replace = new_password;
             }
-            file_writer.write(currentLine + System.getProperty("line.separator"));
+            file_writer.write(currentLine);
+            file_writer.newLine();
+            //file_writer.write(currentLine + System.getProperty("line.separator"));
         }
         file_writer.close();
         file_reader.close();

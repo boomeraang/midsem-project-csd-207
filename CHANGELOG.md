@@ -1,6 +1,19 @@
-## 8.11.17
+## 9.11.17
 
 ### commit
+
+#### Tourist Drone
+* WhereAmI() added
+* TouristMenu() acts like an interface to class TouristDrone
+
+#### Tourists
+* deleting account now logs the user out automatically
+* a new empty constructor
+* tourists are added as tourists now
+
+## 8.11.17
+
+### commit d1e63f3d046c2c6d9637f25d198c20a21d499db6
 #### Admin
 * removed DeleteUser(). now in class Users
 

@@ -1,7 +1,9 @@
 package users;
 
+import city.Places;
 import filestuff.FileIO;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -35,6 +37,24 @@ public class Cops extends User
                 System.out.print("Y:");
                 int y = Integer.parseInt(input.nextLine());
                 SetUserCoords(x,y);
+            }
+            else if(choice == 3)
+            {
+                System.out.println("notes:");
+                String description = input.nextLine();
+
+                Places crime_location = new Places();
+                System.out.println("enter location name.\n name");
+                crime_location.SetName(input);
+                System.out.println("picture ID");
+                crime_location.SetPictureID(input);
+                System.out.println("enter coordinates");
+                crime_location.SetCoords(Integer.parseInt(input.nextLine()), Integer.parseInt(input.nextLine()));
+                crime_location.SetCategory("crime_location");
+
+                File file = new File("/home/cybereagle3-1/IdeaProjects/midsem-project-csd-207/src/main/java/filestuff/crimes.txt");
+                new FileIO().WritePlacesonFile(crime_location, file);
+
             }
             else if(choice == 6)
             {

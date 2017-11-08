@@ -20,7 +20,7 @@ public class TouristAdmin extends Admin
 
             if (ch == 1)
             {
-                User tourist = new User();
+                Tourists tourist = new Tourists();
 
                 System.out.println("enter tourist ID");
                 tourist.SetUserID(input);
