@@ -1,5 +1,6 @@
 package users;
 
+import city.CopDrone;
 import city.Places;
 import filestuff.FileIO;
 
@@ -9,6 +10,17 @@ import java.util.Scanner;
 
 public class Cops extends User
 {
+    public Cops()
+    {
+        super();
+    }
+
+    public Cops(String copID, String pass)
+    {
+        super(copID,pass);
+    }
+
+
     public void CopMenu()
     {
         Scanner input = new Scanner(System.in);
@@ -24,37 +36,25 @@ public class Cops extends User
 
             if (choice == 7)
                 break;
-            else if(choice == 1)
+
+            CopDrone cdrone = new CopDrone();
+            if(choice == 1)
             {
-                System.out.println("X=" + GetUserCoordsX());
-                System.out.println("Y=" + GetUserCoordsY());
+                cdrone.WhereAmI(this);
             }
             else if(choice == 2)
             {
-                System.out.println("enter coordinates");
-                System.out.print("X:");
-                int x = Integer.parseInt(input.nextLine());
-                System.out.print("Y:");
-                int y = Integer.parseInt(input.nextLine());
-                SetUserCoords(x,y);
+                cdrone.MoveDrone(this);
             }
             else if(choice == 3)
             {
-                System.out.println("notes:");
-                String description = input.nextLine();
-
-                Places crime_location = new Places();
-                System.out.println("enter location name.\n name");
-                crime_location.SetName(input);
-                System.out.println("picture ID");
-                crime_location.SetPictureID(input);
-                System.out.println("enter coordinates");
-                crime_location.SetCoords(Integer.parseInt(input.nextLine()), Integer.parseInt(input.nextLine()));
-                crime_location.SetCategory("crime_location");
-
-                File file = new File("/home/cybereagle3-1/IdeaProjects/midsem-project-csd-207/src/main/java/filestuff/crimes.txt");
-                new FileIO().WritePlacesonFile(crime_location, file);
-
+                try
+                {
+                    cdrone.ReportCrime();
+                }catch (IOException io)
+                {
+                    System.out.println("IOException occurred");
+                }
             }
             else if(choice == 6)
             {
@@ -63,13 +63,13 @@ public class Cops extends User
                     System.out.println("please enter password to confirm your identity");
                     String temp_password = input.nextLine();
 
-                    if(new FileIO().UserLogin("tourists.txt",this.GetUserID(),temp_password))
+                    if(new FileIO().UserLogin("cops.txt",this.GetUserID(),temp_password))
                     {
                         System.out.println("enter new password");
                         temp_password = input.nextLine();
                         System.out.println("re-enter password");
                         if(temp_password.equals(input.nextLine()))
-                            ChangeUserPassword("tourists.txt",temp_password);
+                            ChangeUserPassword("cops.txt",temp_password);
                     }
                 } catch (IOException io)
                 {

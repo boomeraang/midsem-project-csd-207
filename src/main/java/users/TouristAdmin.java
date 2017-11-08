@@ -3,6 +3,7 @@ package users;
 import java.io.IOException;
 import java.util.Scanner;
 
+import city.Drone;
 import city.TouristDrone;
 
 public class TouristAdmin extends Admin
@@ -27,10 +28,7 @@ public class TouristAdmin extends Admin
                 System.out.println("set temporary password:");
                 tourist.SetUserPassword(input);
 
-                new TouristDrone().AddTourist(tourist);
-            }
-            else if(ch == 2)
-            {
+                new Drone().AddUser(tourist,"tourists.txt");
             }
             else if(ch == 2)
             {

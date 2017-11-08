@@ -2,6 +2,16 @@
 
 ### commit
 
+#### Drone
+* moved functions AddUser(), WhereAmI(), MoveDrone() up to Drone
+
+#### FileIO
+* added WriteText()
+
+* other minor changes
+
+### commit 697c5a71007ce4c7c7fbd5c7ae24a4cd63627b95
+
 #### Tourist Drone
 * WhereAmI() added
 * TouristMenu() acts like an interface to class TouristDrone

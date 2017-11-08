@@ -31,6 +31,7 @@ public class FileIO
             file_writer.write(ByteBuffer.allocate(10).putFloat(place.GetCoordsX()).array());
                 file_writer.write(System.lineSeparator().getBytes());
             file_writer.write(ByteBuffer.allocate(10).putFloat(place.GetCoordsY()).array());
+                file_writer.write(System.lineSeparator().getBytes());
 
             file_writer.flush();
             file_writer.close();
@@ -41,6 +42,17 @@ public class FileIO
         {
             System.out.println("IOException occurred");
         }
+    }
+
+    public void WriteText(String text,File file) throws IOException
+    {
+        FileOutputStream file_writer = new FileOutputStream(file,true);
+
+        file_writer.write(text.getBytes());
+        file_writer.write(System.lineSeparator().getBytes());
+
+        file_writer.flush();
+        file_writer.close();
     }
 
     public void WriteUsersonFile(User user, File file)
