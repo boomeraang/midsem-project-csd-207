@@ -1,5 +1,8 @@
 package users;
 
+import filestuff.FileIO;
+
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Cops extends User
@@ -14,10 +17,10 @@ public class Cops extends User
         while (!exit_loop)
         {
 
-            System.out.println("1.where am i\n2.go to place\n3.file a crime report\n4.view past reports\n5.change password\n6.logout");
+            System.out.println("1.where am i\n2.go to place\n3.file a crime report\n4.automated drone patrol\n5.view past reports\n6.change password\n7.logout");
             int choice = Integer.parseInt(input.nextLine());
 
-            if (choice == 6)
+            if (choice == 7)
                 break;
             else if(choice == 1)
             {
@@ -32,6 +35,26 @@ public class Cops extends User
                 System.out.print("Y:");
                 int y = Integer.parseInt(input.nextLine());
                 SetUserCoords(x,y);
+            }
+            else if(choice == 6)
+            {
+                try
+                {
+                    System.out.println("please enter password to confirm your identity");
+                    String temp_password = input.nextLine();
+
+                    if(new FileIO().UserLogin("tourists.txt",this.GetUserID(),temp_password))
+                    {
+                        System.out.println("enter new password");
+                        temp_password = input.nextLine();
+                        System.out.println("re-enter password");
+                        if(temp_password.equals(input.nextLine()))
+                            ChangeUserPassword("tourists.txt",temp_password);
+                    }
+                } catch (IOException io)
+                {
+                    System.out.println("IOException occurred");
+                }
             }
         }
 

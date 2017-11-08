@@ -14,7 +14,7 @@ public class CopAdmin extends Admin
 
         while(!exit_loop)
         {
-            System.out.println("1.add cop\n2.delete cop\n3.view reports\n4.logout");
+            System.out.println("1.add cop\n2.view reports\n3.logout");
             ch = Integer.parseInt(input.nextLine());
 
             if (ch == 1)
@@ -30,24 +30,9 @@ public class CopAdmin extends Admin
             }
             else if(ch == 2)
             {
-                Cops to_be_deleted = new Cops();
 
-                System.out.println("enter username to be deleted:");
-                to_be_deleted.SetUserID(input);
-
-                try
-                {
-                    DeleteUser(to_be_deleted,"cops.txt");
-                } catch (IOException io)
-                {
-                    System.out.println("IOException occurred");
-                }
             }
             else if(ch == 3)
-            {
-
-            }
-            else if(ch == 4)
                 return;
         }
     }

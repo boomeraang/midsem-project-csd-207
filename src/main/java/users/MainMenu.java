@@ -34,7 +34,7 @@ public class MainMenu
                 {
                     if(new FileIO().UserLogin("tourists.txt",temp_username,temp_password))
                     {
-                        Tourists tourist = new Tourists();
+                        Tourists tourist = new Tourists(temp_username,temp_password);
                         tourist.TouristMenu();
                     }
 

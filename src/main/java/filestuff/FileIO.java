@@ -69,20 +69,50 @@ public class FileIO
 
     public boolean DeleteUsersfromFile(User user,File read_file) throws IOException
     {
-        File temp_file = new File("/home/cybereagle3-1/AndroidStudioProjects/FirstApp/midsem_project/src/main/java/filestuff/temp.txt");
+        File temp_file = new File("/home/cybereagle3-1/IdeaProjects/midsem-project-csd-207/src/main/java/filestuff/temp.txt");
 
         BufferedReader file_reader = new BufferedReader(new FileReader(read_file));
         BufferedWriter file_writer = new BufferedWriter(new FileWriter(temp_file));
 
-        String lineToRemove = user.GetUserID() + user.GetUserPassword();
+        String user_line = user.GetUserID();
         String currentLine;
 
         while((currentLine = file_reader.readLine()) != null)
         {
-            // trim newline when comparing with lineToRemove
+            // trim newline when comparing with user_line
             String trimmedLine = currentLine.trim();
-            if(trimmedLine.equals(lineToRemove))
+            if(trimmedLine.equals(user_line))
+            {
+                user_line = user.GetUserPassword();
                 continue;
+            }
+            file_writer.write(currentLine + System.getProperty("line.separator"));
+        }
+        file_writer.close();
+        file_reader.close();
+
+        boolean success = temp_file.renameTo(read_file);
+        return success;
+    }
+
+    public boolean ChangePasswordfromFile(User user, File read_file, String new_password) throws IOException
+    {
+        File temp_file = new File("/home/cybereagle3-1/IdeaProjects/midsem-project-csd-207/src/main/java/filestuff/temp.txt");
+
+        BufferedReader file_reader = new BufferedReader(new FileReader(read_file));
+        BufferedWriter file_writer = new BufferedWriter(new FileWriter(temp_file));
+
+        String line_to_replace = user.GetUserPassword();
+        String currentLine;
+
+        while((currentLine = file_reader.readLine()) != null)
+        {
+            // trim newline when comparing with line_to_replace
+            String trimmedLine = currentLine.trim();
+            if(trimmedLine.equals(line_to_replace))
+            {
+                line_to_replace = new_password;
+            }
             file_writer.write(currentLine + System.getProperty("line.separator"));
         }
         file_writer.close();
@@ -94,7 +124,7 @@ public class FileIO
 
     public boolean UserLogin(String filename,String ID,String password) throws IOException
     {
-        File file = new File("/home/cybereagle3-1/AndroidStudioProjects/FirstApp/midsem_project/src/main/java/filestuff/" + filename);
+        File file = new File("/home/cybereagle3-1/IdeaProjects/midsem-project-csd-207/src/main/java/filestuff/" + filename);
         BufferedReader file_reader = new BufferedReader(new FileReader(file));
 
         String trimmed_line,current_line;

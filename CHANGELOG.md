@@ -1,6 +1,15 @@
-## 6.11.17
+## 8.11.17
 
 ### commit
+#### Admin
+* removed DeleteUser(). now in class Users
+
+#### User
+* added 2 explicit constructors
+
+#### FileIO
+* added ChangePasswordfromFile()
+* modified DeleteUserfromFile()
 
 ## 5.11.17
 

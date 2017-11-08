@@ -46,7 +46,7 @@ public class TouristDrone extends Drone
             landmark.SetCoords(Integer.parseInt(input.nextLine()), Integer.parseInt(input.nextLine()));
             landmark.SetCategory("landmark");
 
-            File file = new File("/home/cybereagle3-1/AndroidStudioProjects/FirstApp/midsem_project/src/main/java/filestuff/" + choice_type);
+            File file = new File("/home/cybereagle3-1/IdeaProjects/midsem-project-csd-207/src/main/java/filestuff/" + choice_type);
             new FileIO().WritePlacesonFile(landmark, file);
 
             System.out.println("do you want to add any more places y/n");
@@ -59,7 +59,8 @@ public class TouristDrone extends Drone
 
     public void AddTourist(User tourist)
     {
-        File file = new File("/home/cybereagle3-1/AndroidStudioProjects/FirstApp/midsem_project/src/main/java/filestuff/tourists.txt");
+        File file = new File("/home/cybereagle3-1/IdeaProjects/midsem-project-csd-207/src/main/java/filestuff/tourists.txt");
         new FileIO().WriteUsersonFile(tourist, file);
     }
+
 }

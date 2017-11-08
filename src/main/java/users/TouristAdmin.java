@@ -15,7 +15,7 @@ public class TouristAdmin extends Admin
 
         while(!exit_loop)
         {
-            System.out.println("1.add tourist\n2.delete tourist\n3.add place\n4.logout");
+            System.out.println("1.add tourist\n2.add place\n3.logout");
             ch = Integer.parseInt(input.nextLine());
 
             if (ch == 1)
@@ -31,24 +31,12 @@ public class TouristAdmin extends Admin
             }
             else if(ch == 2)
             {
-                User to_be_deleted = new User();
-
-                System.out.println("enter username to be deleted:");
-                to_be_deleted.SetUserID(input);
-
-                try
-                {
-                    DeleteUser(to_be_deleted,"tourists.txt");
-                } catch (IOException io)
-                {
-                    System.out.println("IOException occurred");
-                }
             }
-            else if(ch == 3)
+            else if(ch == 2)
             {
                 new TouristDrone().AddPlace();
             }
-            else if(ch == 4)
+            else if(ch == 3)
                 return;
         }
     }
