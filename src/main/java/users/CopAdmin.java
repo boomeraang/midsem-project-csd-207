@@ -14,7 +14,7 @@ public class CopAdmin extends Admin
 
         while(!exit_loop)
         {
-            System.out.println("1.add cop\n2.view reports\n3.logout");
+            System.out.println("1.add cop\n2.logout");
             ch = Integer.parseInt(input.nextLine());
 
             if (ch == 1)
@@ -26,13 +26,9 @@ public class CopAdmin extends Admin
                 System.out.println("set temporary password:");
                 cop.SetUserPassword(input);
 
-                new CopDrone().AddCop(cop);
+                new CopDrone().AddUser(cop,"cops.txt");
             }
             else if(ch == 2)
-            {
-
-            }
-            else if(ch == 3)
                 return;
         }
     }

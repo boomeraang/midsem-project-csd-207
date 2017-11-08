@@ -23,9 +23,9 @@ public class FileIO
 
             //writing places details by converting individual data members to byte arrays
                 file_writer.write(System.lineSeparator().getBytes());
-            file_writer.write(place.GetName().getBytes());
-                file_writer.write(System.lineSeparator().getBytes());
             file_writer.write(place.GetPictureID().getBytes());
+                file_writer.write(System.lineSeparator().getBytes());
+            file_writer.write(place.GetName().getBytes());
             //using ByteBuffer to getbytes float stuff
                 file_writer.write(System.lineSeparator().getBytes());
             file_writer.write(ByteBuffer.allocate(10).putFloat(place.GetCoordsX()).array());
@@ -109,6 +109,11 @@ public class FileIO
         return success;
     }
 
+    public void SearchFile(String keyword, File read_file) throws IOException
+    {
+
+    }
+
     public boolean ChangePasswordfromFile(User user, File read_file, String new_password) throws IOException
     {
         File temp_file = new File("/home/cybereagle3-1/IdeaProjects/midsem-project-csd-207/src/main/java/filestuff/temp.txt");
@@ -160,4 +165,6 @@ public class FileIO
         file_reader.close();
         return false;
     }
+
+
 }

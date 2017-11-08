@@ -2,6 +2,16 @@
 
 ### commit
 
+#### Cop Drone
+* added ReportCrime()
+* randomised ReportCrime(boolean automate)
+* added ShowReports() connects to SearchFile()
+
+#### FileIO
+* added SearchFile()
+
+### commit a504e9b780a1b0f42ec07d6bb9baa0a2d751e39b
+
 #### Drone
 * moved functions AddUser(), WhereAmI(), MoveDrone() up to Drone
 

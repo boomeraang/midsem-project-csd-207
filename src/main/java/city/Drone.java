@@ -42,7 +42,7 @@ public class Drone
 
     //end of set and get functions
 
-    public void AddUser(Tourists user,String filename)
+    public void AddUser(User user,String filename)
     {
         File file = new File("/home/cybereagle3-1/IdeaProjects/midsem-project-csd-207/src/main/java/filestuff/" + filename);
         new FileIO().WriteUsersonFile(user, file);

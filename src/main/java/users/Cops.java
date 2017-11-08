@@ -4,8 +4,8 @@ import city.CopDrone;
 import city.Places;
 import filestuff.FileIO;
 
-import java.io.File;
 import java.io.IOException;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Cops extends User
@@ -19,7 +19,6 @@ public class Cops extends User
     {
         super(copID,pass);
     }
-
 
     public void CopMenu()
     {
@@ -52,6 +51,31 @@ public class Cops extends User
                 {
                     cdrone.ReportCrime();
                 }catch (IOException io)
+                {
+                    System.out.println("IOException occurred");
+                }
+            }
+            else if(choice == 4)
+            {
+                Random random = new Random();
+                try
+                {
+                    for (int i = 0; i <random.nextInt(3) ; i++)
+                    {
+                        cdrone.ReportCrime(true);
+                    }
+                }catch (IOException io)
+                {
+                    System.out.println("IOException occurred");
+                }
+            }
+            else if (choice == 5)
+            {
+                try
+                {
+                    System.out.println("enter picture ID");
+                    cdrone.ShowReports(input.nextLine());
+                } catch (IOException io)
                 {
                     System.out.println("IOException occurred");
                 }
