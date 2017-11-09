@@ -28,9 +28,9 @@ public class FileIO
             file_writer.write(place.GetName().getBytes());
             //using ByteBuffer to getbytes float stuff
                 file_writer.write(System.lineSeparator().getBytes());
-            file_writer.write(ByteBuffer.allocate(10).putFloat(place.GetCoordsX()).array());
+            file_writer.write(String.valueOf(place.GetCoordsX()).getBytes());
                 file_writer.write(System.lineSeparator().getBytes());
-            file_writer.write(ByteBuffer.allocate(10).putFloat(place.GetCoordsY()).array());
+            file_writer.write(String.valueOf(place.GetCoordsY()).getBytes());
                 file_writer.write(System.lineSeparator().getBytes());
 
             file_writer.flush();
@@ -109,9 +109,32 @@ public class FileIO
         return success;
     }
 
-    public void SearchFile(String keyword, File read_file) throws IOException
+    public void SearchFile(String keyword, File read_file, int no_of_lines) throws IOException
     {
+        BufferedReader file_reader = new BufferedReader(new FileReader((read_file)));
 
+        String line_so_search = keyword;
+        String current_line;
+
+        while((current_line = file_reader.readLine()) != null)
+        {
+            String trimmed_line = current_line.trim();
+
+            if(trimmed_line.equals(line_so_search))
+            {
+                for (int i = 0; i < no_of_lines ; i++)
+                {
+                    System.out.println(current_line);
+                    current_line = file_reader.readLine();
+                    //trimmed_line screws the function up
+                    //trimmed_line = current_line.trim();
+                }
+
+                break;
+            }
+        }
+
+        file_reader.close();
     }
 
     public boolean ChangePasswordfromFile(User user, File read_file, String new_password) throws IOException

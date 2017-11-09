@@ -44,22 +44,27 @@ public class CopDrone extends Drone
         Scanner input = new Scanner("");
 
         crime_location.SetName(input);
+        System.out.println(crime_location.GetName());
         input = new Scanner(String.valueOf(random.nextInt(50)));
         crime_location.SetPictureID(input);
         crime_location.SetCoords(random.nextInt(100),random.nextInt(100));
 
+        //doesnt run for some reason
         String description = "automated report";
+        System.out.println(description);
         Date date = new Date();
         File file = new File("/home/cybereagle3-1/IdeaProjects/midsem-project-csd-207/src/main/java/filestuff/crimes.txt");
         FileIO temp = new FileIO();
         temp.WritePlacesonFile(crime_location, file);
         temp.WriteText(date.toString(),file);
         temp.WriteText(description,file);
+
+        System.out.println(crime_location.GetPictureID());
     }
 
     public void ShowReports(String keyword) throws IOException
     {
         File file = new File("/home/cybereagle3-1/IdeaProjects/midsem-project-csd-207/src/main/java/filestuff/crimes.txt");
-        new FileIO().SearchFile(keyword,file);
+        new FileIO().SearchFile(keyword,file,7);
     }
 }
