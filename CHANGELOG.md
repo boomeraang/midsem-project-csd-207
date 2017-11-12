@@ -1,3 +1,22 @@
+## 12.11.17
+### commit ec8d076e2eadf8b9a19d382d69e0d664f3bab4df
+
+#### TouristDrone
+* added SuggestPlaces()
+
+#### Places
+* added field distance
+
+#### FileIO
+* overloaded searchplacesonfile() for suggesting places
+
+#### Cops
+* modified wherami() call
+
+#### Tourists
+* modified wherami() call
+
+
 ## 9.11.17
 
 ### commit 365a86ef5eacf5c75c71f5dfb13938c41ccdcb99
