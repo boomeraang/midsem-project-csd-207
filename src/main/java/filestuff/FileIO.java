@@ -137,6 +137,46 @@ public class FileIO
         file_reader.close();
     }
 
+    public Places SearchFileforPlaces(File read_file,int start_at_line) throws IOException
+    {
+        BufferedReader file_reader = new BufferedReader(new FileReader((read_file)));
+        int i=1,x=0,y=0;
+        String current_line;
+        Places place =null;
+
+        //reads lines that will never be used
+        for(int j=1;j<start_at_line;j++)
+            file_reader.readLine();
+
+        while((current_line = file_reader.readLine()) != null)
+        {
+            String trimmed_line = current_line.trim();
+
+            if(i == 2)
+            {   place = new Places();
+                place.SetPictureID(current_line);
+            }
+            else if(i == 3)
+                place.SetName(current_line);
+            else if(i == 4)
+                x = Integer.parseInt(current_line);
+            else if(i == 5)
+            {
+                y = (int) Float.parseFloat(current_line);
+                place.SetCoords(x, y);
+                break;
+            }
+
+            i++;
+            //trimmed_line screws the function up
+            //trimmed_line = current_line.trim();
+        }
+
+        file_reader.close();
+        return place;
+    }
+
+
     public boolean ChangePasswordfromFile(User user, File read_file, String new_password) throws IOException
     {
         File temp_file = new File("/home/cybereagle3-1/IdeaProjects/midsem-project-csd-207/src/main/java/filestuff/temp.txt");

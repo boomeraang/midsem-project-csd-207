@@ -39,7 +39,7 @@ public class Cops extends User
             CopDrone cdrone = new CopDrone();
             if(choice == 1)
             {
-                cdrone.WhereAmI(this);
+                cdrone.WhereAmI(cdrone);
             }
             else if(choice == 2)
             {

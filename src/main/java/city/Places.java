@@ -7,8 +7,9 @@ public class Places
 {
     private String name,pictureID,category;
     private int coords_x,coords_y;
-
+    private double distance;
     //set and get functions
+
 
     public void SetName(Scanner input)
     {
@@ -20,6 +21,16 @@ public class Places
         pictureID = input.nextLine();
     }
 
+    public void SetName(String x)
+{
+    name = x;
+}
+
+    public void SetPictureID(String x)
+    {
+        pictureID = x;
+    }
+
     public void SetCategory(String x)
     {
         category = x;
@@ -29,6 +40,11 @@ public class Places
     {
         coords_x = x;
         coords_y = y;
+    }
+
+    public void SetDistance(double d)
+    {
+        distance = d;
     }
 
     public String GetName()
@@ -56,5 +72,9 @@ public class Places
         return coords_y;
     }
 
+    public double GetDistance()
+    {
+        return distance;
+    }
     //end of set and get functions
 }

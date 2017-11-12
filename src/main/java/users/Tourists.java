@@ -40,10 +40,16 @@ public class Tourists extends User
 
             TouristDrone tdrone = new TouristDrone();
             if (choice == 1)
-                tdrone.WhereAmI(this);
+                tdrone.WhereAmI(tdrone);
             else if(choice == 2)
             {
-
+                try
+                {
+                    tdrone.SuggestPlaces(this);
+                }catch (IOException io)
+                {
+                    io.printStackTrace();
+                }
             }
             else if(choice == 3)
             {

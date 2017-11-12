@@ -1,7 +1,6 @@
 package city;
 
 import filestuff.FileIO;
-import users.Tourists;
 import users.User;
 
 import java.io.File;
@@ -48,10 +47,10 @@ public class Drone
         new FileIO().WriteUsersonFile(user, file);
     }
 
-    public void WhereAmI(User user)
+    public void WhereAmI(Drone drone)
     {
-        System.out.println("X=" + user.GetUserCoordsX());
-        System.out.println("Y=" + user.GetUserCoordsY());
+        System.out.println("X=" + drone.GetCoordsX());
+        System.out.println("Y=" + drone.GetCoordsY());
     }
 
     public void MoveDrone(User user)
@@ -64,6 +63,19 @@ public class Drone
         System.out.print("Y:");
         int y = Integer.parseInt(input.nextLine());
         user.SetUserCoords(x,y);
+        this.SetCoords(x,y);
+    }
+
+    public double CalculateDistance(Places place)
+    {
+        float x,y,x2,y2;
+        x2 = place.GetCoordsX();
+        y2 = place.GetCoordsY();
+        x = this.GetCoordsX();
+        y = this.GetCoordsY();
+
+        double distance = Math.sqrt(Math.pow(x2-x,2) + Math.pow(y2-y,2));
+        return distance;
     }
 }
 
